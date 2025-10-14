@@ -24,32 +24,36 @@ DARK_YELLOW =	\033[38;5;143m
 
 # Compiler info
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CPPFLAGS = -Wall -Werror -Wextra
+
+# Dirs
+OBJ_DIR = build
 
 # Target name
-NAME = mega
+NAME = megaphone
 
 # Files
 SRC = ./megaphone.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
 # Create program
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 	@echo "\n${GREEN} Created $(NAME) ${DEF_COLOR}\n"
 
 # Compiles .cpp into .o files
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir --p $(dir $@)
 	@echo "${MAGENTA} ~ ${BROWN} Compiling... ${MAGENTA}-> ${CYAN}$< ${DEF_COLOR}"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) -c $< -o $@
 
 # Build all
 all: $(NAME)
 
 # Remove -o files
 clean:
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)
 
 # Clean everything
 fclean: clean
