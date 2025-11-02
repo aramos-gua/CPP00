@@ -30,10 +30,10 @@ CPPFLAGS = -Wall -Werror -Wextra
 OBJ_DIR = build
 
 # Target name
-NAME = megaphone
+NAME = My Awesome PhoneBook
 
 # Files
-SRC = ./megaphone.cpp
+SRC = ./phonebook.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
