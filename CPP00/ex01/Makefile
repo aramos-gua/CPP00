@@ -33,7 +33,7 @@ OBJ_DIR = build
 NAME = My Awesome PhoneBook
 
 # Files
-SRC = ./phonebook.cpp
+SRC = ./main.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
