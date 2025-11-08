@@ -23,8 +23,8 @@ class Contact
 	std::string	_number;
 	std::string	_secret;
 
-	bool	_isAlpha(std::string const input);
-	bool	_isDigit(std::string const input);
+	bool	_allIsAlpha(std::string const input);
+	bool	_allIsDigit(std::string const input);
 
 	public:
 		Contact(void);
