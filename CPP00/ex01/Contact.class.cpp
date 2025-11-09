@@ -66,5 +66,12 @@ bool	Contact::setFirstName(std::string str)
 {
 	if (str.empty())
 		return (false);
-	else if (!_allIsAlpha)
+	else if (!_allIsAlpha(str))
+	{
+		std::cout << "Error: Names can only contain letters, spaces or '-'" << std::endl;
+		return (false);
+	}
+	str[0] = std::toupper(str[0]);
+	this->_firstName = str;
+	return (true);
 }
