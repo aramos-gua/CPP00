@@ -75,3 +75,68 @@ bool	Contact::setFirstName(std::string str)
 	this->_firstName = str;
 	return (true);
 }
+bool	Contact:setLastName(std::string str)
+{
+	if (str.empty())
+		return (false);
+	else if (!_allIsAlpha(str))
+	{
+		std::cout << "Error: Names can only contain letters, spaces or '-'" << std::endl;
+		return (false);
+	}
+	for (std::string::iterator i = str.begin(); i != str.end(); i++)
+		*i = std::toupper(*i);
+	this->_lastName = str;
+	return (true);
+}
+bool	Contact::setNickname(std::string str)
+{
+	if (str.empty())
+		return (false);
+	else if (!_allIsAlpha(str))
+	{
+		std::cout << "Error: Names can only contain letters, spaces or '-'" << std::endl;
+		return (false);
+	}
+	str[0] = std::toupper(str[0]);
+	this->_nickname = str;
+	return (true);
+}
+bool	Contact::setNumber(str::string str)
+{
+	if (str.empty())
+		return (false);
+	else if (!_allIsDigit(str))
+	{
+		std::cout << "Error: Numbers can only contain digits, spaces or '-'" << std::endl;
+		return (false);
+	}
+	this->_number = str;
+	return (true);
+}
+bool	Contact::setSecret(str::string const str)
+{
+	if (str.empty())
+		return (false);
+	this->_secret = str;
+	return (true);
+}
+/******************************************************************************/
+/*                                 PRIVATE                                    */
+/******************************************************************************/
+bool	Contact::_allIsAlpha(std::string const s)
+{
+	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
+		if (!std::isalpha(*it) && *it != ' ' && *it != '-')
+			return (false);
+}
+bool	Contact::_allIsDigit(std::string const s)
+{
+	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
+		if (!std::isdigit(*it) && *it != ' ' && *it != '-')
+			return (false);
+	return (true);
+}
+/******************************************************************************/
+/*                                 PUBLIC                                     */
+/******************************************************************************/
