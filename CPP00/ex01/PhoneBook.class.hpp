@@ -6,7 +6,7 @@
 /*   By: aramos <alejandro.ramos.gua@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 12:21:20 by aramos            #+#    #+#             */
-/*   Updated: 2025/11/08 14:26:08 by aramos           ###   ########.fr       */
+/*   Updated: 2025/11/11 18:44:41 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <string>
 # include "Contact.class.hpp"
 
-class Phonebook
+class PhoneBook
 {
-	int	_	_index;
+	int		_index;
 	bool	_finish;
 	Contact	_contactList[8];
 	

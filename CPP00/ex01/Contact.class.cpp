@@ -140,3 +140,23 @@ bool	Contact::_allIsDigit(std::string const s)
 /******************************************************************************/
 /*                                 PUBLIC                                     */
 /******************************************************************************/
+bool	Contact:isEmpty(void) const
+{
+	if (this->_firstName.empty() || 
+		this->_lastName.empty() || 
+		this->_nickname.empty() || 
+		this->_number.empty() || 
+		this->_secret.empty())
+		return (true);
+}
+bool	Contact:displayInfo(void) const
+{
+	if (this->isEmpty())
+		return (false);
+	std::cout << "First Name\t: " << this->_getFirstName() << std::endl
+			 << "Last Name\t: " << this->_getLastName() << std::endl
+			 << "Nickname\t: " << this->_getNickname() << std::endl
+			 << "Phone Number\t: " << this->_getNumber() << std::endl
+			 << "Darkest Secret\t: " << this->_getSecret() << std::endl;
+	return (true);
+}
