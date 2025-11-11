@@ -6,7 +6,7 @@
 /*   By: aramos <alejandro.ramos.gua@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 12:21:20 by aramos            #+#    #+#             */
-/*   Updated: 2025/11/11 18:44:41 by aramos           ###   ########.fr       */
+/*   Updated: 2025/11/11 19:21:33 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		bool	newContact(void);
-		bool	searchContact(void);
-		void	showContact(int i) const;
+		std::string	deleteSpaces(std::string str);
+		bool		newContact(void);
+		bool		searchContact(void);
+		void		showContact(int i) const;
 };
 #endif

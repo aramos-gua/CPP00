@@ -6,7 +6,7 @@
 /*   By: aramos <alejandro.ramos.gua@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:50:11 by aramos            #+#    #+#             */
-/*   Updated: 2025/11/11 19:18:33 by aramos           ###   ########.fr       */
+/*   Updated: 2025/11/11 19:37:55 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,3 +99,59 @@ bool	_displayContact(std::string const input) const
 /******************************************************************************/
 /*                                 PUBLIC                                     */
 /******************************************************************************/
+std::string	PhoneBook::deleteSpaces(std::string str)
+{
+	std::string	blank = " \t\n\r\v\f";
+	size_t		start;
+	size_t		end;
+
+	start = str.find_first_not_of(blank);
+	end = str.find_last_not_of(blank);
+	if (start == end)
+		return (str);
+	return (str.substr(start, end - start + 1));
+}
+bool	newContact(void)
+{
+	std::string	input;
+
+	_nextIndex();
+	std::cout << std::endl << "----------Options-----------" << std::endl << std::endl;
+	while (!_abort)
+	{
+		input = _validateInput("First Name");
+		if (_abort || this->_contactList[_index].setFirstName(input))
+			break ;
+	}
+	while (!_abort)
+	{
+		input = _validateInput("Last Name");
+		if (_abort || this->_contactList[_index].setLastName(input))
+			break ;
+	}
+	while (!_abort)
+	{
+		input = _validateInput("Nickname");
+		if (_abort || this->_contactList[_index].setNickname(input))
+			break ;
+	}
+	while (!_abort)
+	{
+		input = _validateInput("Phone Number");
+		if (_abort || this->_contactList[_index].setNumber(input))
+			break ;
+	}
+	while (!_abort)
+	{
+		input = _validateInput("Darkest Secret");
+		if (_abort || this->_contactList[_index].setSecret(input))
+			break ;
+	}
+	if (_abort)
+	{
+		_abort = false;
+		return (false);
+	}
+	std::cout << "Contact saved" << std::endl;
+	return (true);
+}
