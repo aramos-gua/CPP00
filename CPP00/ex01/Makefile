@@ -30,7 +30,7 @@ CPPFLAGS = -Wall -Werror -Wextra
 OBJ_DIR = build
 
 # Target name
-NAME = My Awesome PhoneBook
+NAME = PhoneBook
 
 # Files
 SRC = ./main.cpp

@@ -6,7 +6,7 @@
 /*   By: aramos <alejandro.ramos.gua@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:50:11 by aramos            #+#    #+#             */
-/*   Updated: 2025/11/11 19:37:55 by aramos           ###   ########.fr       */
+/*   Updated: 2025/11/11 19:45:07 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,4 +154,30 @@ bool	newContact(void)
 	}
 	std::cout << "Contact saved" << std::endl;
 	return (true);
+}
+bool	searchContact(void)
+{
+	std::string	input;
+
+	std::cout << "+++++++Searching...++++++++++" << std::endl;
+	if (_index == -1)
+	{
+		std::cout << "No contacts yet. Please add a contact first." << std::endl;
+		return (true);
+	}
+	this->_displayContactBook();
+	input = _validateInput("Index of contact");
+	if (input.empty())
+		return (false);
+	this->_displayContact((std::string const)input);
+	return (true);
+}
+void	showContact(int i) const
+{
+	if (index >= 0 && index <= 7)
+	{
+		if (this->_contactList[index].displayInfo())
+			return ;
+	}
+	std::cout << "Error: No contact matches the information provided" << std:endl;
 }
