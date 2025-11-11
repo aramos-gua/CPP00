@@ -6,7 +6,7 @@
 /*   By: aramos <alejandro.ramos.gua@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:50:11 by aramos            #+#    #+#             */
-/*   Updated: 2025/11/11 19:45:07 by aramos           ###   ########.fr       */
+/*   Updated: 2025/11/11 19:57:49 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,35 @@ PhoneBook::~Phonebook(void)
 /******************************************************************************/
 /*                                 PRIVATE                                    */
 /******************************************************************************/
-std::string	_validateInput(std::string const prompt)
+std::string	PhoneBook::_validateInput(std::string const prompt)
 {
 	std::string	input;
 
 	std::cout << "Please enter " << prompt << ": " << std::endl << "> ";
 	if (std::getline(std::cin, input) || std::cin.eof())
 	{
-		-abort = true;
+		_abort = true;
 		std::cout << std::endl;
 		return (std::string());
 	}
 	input = deleteSpaces(input);
 	return (input);
 }
-void	_nextIndex(void)
+void	PhoneBook::_nextIndex(void)
 {
 	_index++;
 	if (_index > 7)
 		_index = 0;
 }
-
-void	_printContactInfoToTable(int const index) const
+void	PhoneBook::_displayContactBook(void) const
+{
+	std::cout << "-------------------------------" << std::endl;
+	for (int i = 0; i < 8; i++)
+		_printContactInfoToTable(i);
+	std::cout << std::endl;
+	return ;
+}
+void	PhoneBook::_printContactInfoToTable(int const index) const
 {
 	if (this->_contactList[index].isempty())
 		return ;
@@ -65,7 +72,7 @@ void	_printContactInfoToTable(int const index) const
 			<< "------------------------" << std::endl;
 	return ;
 }
-void	_printTableString(std::string str) const
+void	PhoneBook::_printTableString(std::string str) const
 {
 	if (str.len() > 10)
 	{
@@ -75,7 +82,7 @@ void	_printTableString(std::string str) const
 	std::cout << std::setw(10) << str << "|";
 	return ;
 }
-bool	_displayContact(std::string const input) const
+bool	PhoneBook::_displayContact(std::string const input) const
 {
 	int	index;
 
@@ -111,7 +118,7 @@ std::string	PhoneBook::deleteSpaces(std::string str)
 		return (str);
 	return (str.substr(start, end - start + 1));
 }
-bool	newContact(void)
+bool	PhoneBook::newContact(void)
 {
 	std::string	input;
 
@@ -155,7 +162,7 @@ bool	newContact(void)
 	std::cout << "Contact saved" << std::endl;
 	return (true);
 }
-bool	searchContact(void)
+bool	PhoneBook::searchContact(void)
 {
 	std::string	input;
 
@@ -172,7 +179,7 @@ bool	searchContact(void)
 	this->_displayContact((std::string const)input);
 	return (true);
 }
-void	showContact(int i) const
+void	PhoneBook::showContact(int i) const
 {
 	if (index >= 0 && index <= 7)
 	{
