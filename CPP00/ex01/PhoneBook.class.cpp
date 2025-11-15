@@ -37,7 +37,7 @@ std::string	PhoneBook::_validateInput(std::string const prompt)
 	std::string	input;
 
 	std::cout << "Please enter " << prompt << ": " << std::endl << "> ";
-	if (std::getline(std::cin, input) || std::cin.eof())
+	if (!std::getline(std::cin, input) || std::cin.eof())
 	{
 		_abort = true;
 		std::cout << std::endl;

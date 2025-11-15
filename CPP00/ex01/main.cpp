@@ -34,8 +34,13 @@ int     main(void)
 	PhoneBook	directory;
 	std::string	arg;
 
+	std::cout << std::endl << "Welcome to your PhoneBook" << std::endl;
 	while (1)
 	{
+		std::cout << std::endl
+			<< "---------- Main Menu ----------" << std::endl
+			<< std::endl
+			<< "Please type an action" << std::endl << ">";
 		arg = validateInput(&directory);
 		if (arg == "EXIT")
 			break ;
@@ -52,6 +57,6 @@ int     main(void)
 		else
 			std::cout << "Please enter: ADD, SEARCH, EXIT" << std::endl;
 	}
-	std::cout << "Bye" << std::endl;
+	std::cout << "Bye. Closing app" << std::endl;
 	return (0);
 }
