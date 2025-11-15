@@ -54,7 +54,9 @@ void	PhoneBook::_nextIndex(void)
 }
 void	PhoneBook::_displayContactBook(void) const
 {
-	std::cout << "-------------------------------" << std::endl;
+	std::cout	<< ">~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~<" << std::endl
+				<< "|    INDEX   | FIRST NAME | LAST  NAME |  NICKNAME  |" << std::endl
+				<< ">~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~<" << std::endl;
 	for (int i = 0; i < 8; i++)
 		_printContactInfoToTable(i);
 	std::cout << std::endl;
@@ -64,22 +66,22 @@ void	PhoneBook::_printContactInfoToTable(int const index) const
 {
 	if (this->_contactList[index].isEmpty())
 		return ;
-	std::cout << "|" << std::setw(10) << index << "|";
+	std::cout << "|" << std::setw(12) << index << "|";
 	_printTableString(this->_contactList[index].getFirstName());
 	_printTableString(this->_contactList[index].getLastName());
 	_printTableString(this->_contactList[index].getNickname());
 	std::cout << std::endl
-			<< "------------------------" << std::endl;
+			<< ">~~~~~~~°------------°------------°------------<" << std::endl;
 	return ;
 }
 void	PhoneBook::_printTableString(std::string str) const
 {
-	if (str.length() > 10)
+	if (str.length() > 12)
 	{
 		str.resize(9);
 		str += ".";
 	}
-	std::cout << std::setw(10) << str << "|";
+	std::cout << std::setw(12) << str << "|";
 	return ;
 }
 bool	PhoneBook::_displayContact(std::string const input) const
