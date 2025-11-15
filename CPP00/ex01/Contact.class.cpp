@@ -75,7 +75,7 @@ bool	Contact::setFirstName(std::string str)
 	this->_firstName = str;
 	return (true);
 }
-bool	Contact:setLastName(std::string str)
+bool	Contact::setLastName(std::string str)
 {
 	if (str.empty())
 		return (false);
@@ -102,7 +102,7 @@ bool	Contact::setNickname(std::string str)
 	this->_nickname = str;
 	return (true);
 }
-bool	Contact::setNumber(str::string str)
+bool	Contact::setNumber(std::string const str)
 {
 	if (str.empty())
 		return (false);
@@ -114,7 +114,7 @@ bool	Contact::setNumber(str::string str)
 	this->_number = str;
 	return (true);
 }
-bool	Contact::setSecret(str::string const str)
+bool	Contact::setSecret(std::string const str)
 {
 	if (str.empty())
 		return (false);
@@ -129,6 +129,7 @@ bool	Contact::_allIsAlpha(std::string const s)
 	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
 		if (!std::isalpha(*it) && *it != ' ' && *it != '-')
 			return (false);
+	return (true);
 }
 bool	Contact::_allIsDigit(std::string const s)
 {
@@ -140,7 +141,7 @@ bool	Contact::_allIsDigit(std::string const s)
 /******************************************************************************/
 /*                                 PUBLIC                                     */
 /******************************************************************************/
-bool	Contact:isEmpty(void) const
+bool	Contact::isEmpty(void) const
 {
 	if (this->_firstName.empty() || 
 		this->_lastName.empty() || 
@@ -148,15 +149,16 @@ bool	Contact:isEmpty(void) const
 		this->_number.empty() || 
 		this->_secret.empty())
 		return (true);
+	return (false);
 }
-bool	Contact:displayInfo(void) const
+bool	Contact::displayInfo(void) const
 {
 	if (this->isEmpty())
 		return (false);
-	std::cout << "First Name\t: " << this->_getFirstName() << std::endl
-			 << "Last Name\t: " << this->_getLastName() << std::endl
-			 << "Nickname\t: " << this->_getNickname() << std::endl
-			 << "Phone Number\t: " << this->_getNumber() << std::endl
-			 << "Darkest Secret\t: " << this->_getSecret() << std::endl;
+	std::cout << "First Name\t: " << this->getFirstName() << std::endl
+			 << "Last Name\t: " << this->getLastName() << std::endl
+			 << "Nickname\t: " << this->getNickname() << std::endl
+			 << "Phone Number\t: " << this->getNumber() << std::endl
+			 << "Darkest Secret\t: " << this->getSecret() << std::endl;
 	return (true);
 }

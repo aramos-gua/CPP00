@@ -18,14 +18,14 @@
 /******************************************************************************/
 /*                                 CONSTRUCTOR                                */
 /******************************************************************************/
-PhoneBook::PhoneBook(void) : _index(-1), _finish(false)
+PhoneBook::PhoneBook(void) : _index(-1), _abort(false)
 {
 	return ;
 }
 /******************************************************************************/
 /*                                 DESTRUCTOR                                 */
 /******************************************************************************/
-PhoneBook::~Phonebook(void)
+PhoneBook::~PhoneBook(void)
 {
 	return ;
 }
@@ -62,7 +62,7 @@ void	PhoneBook::_displayContactBook(void) const
 }
 void	PhoneBook::_printContactInfoToTable(int const index) const
 {
-	if (this->_contactList[index].isempty())
+	if (this->_contactList[index].isEmpty())
 		return ;
 	std::cout << "|" << std::setw(10) << index << "|";
 	_printTableString(this->_contactList[index].getFirstName());
@@ -74,7 +74,7 @@ void	PhoneBook::_printContactInfoToTable(int const index) const
 }
 void	PhoneBook::_printTableString(std::string str) const
 {
-	if (str.len() > 10)
+	if (str.length() > 10)
 	{
 		str.resize(9);
 		str += ".";
@@ -179,12 +179,12 @@ bool	PhoneBook::searchContact(void)
 	this->_displayContact((std::string const)input);
 	return (true);
 }
-void	PhoneBook::showContact(int i) const
+void	PhoneBook::showContact(int index) const
 {
 	if (index >= 0 && index <= 7)
 	{
 		if (this->_contactList[index].displayInfo())
 			return ;
 	}
-	std::cout << "Error: No contact matches the information provided" << std:endl;
+	std::cout << "Error: No contact matches the information provided" << std::endl;
 }

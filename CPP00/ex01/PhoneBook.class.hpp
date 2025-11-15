@@ -18,16 +18,17 @@
 
 class PhoneBook
 {
-	int		_index;
-	bool	_finish;
-	Contact	_contactList[8];
-	
-	std::string	_validateInput(std::string const prompt);
-	void		_nextIndex(void);
-	bool		_displayContact(std::string const input) const;
-	void		_displayContactBook(void) const;
-	void		_printContactInfoToTable(int const index) const;
-	void		_printTableString(std::string str) const;
+	private:
+		int		_index;
+		bool	_abort;
+		Contact	_contactList[8];
+		
+		std::string	_validateInput(std::string const prompt);
+		void		_nextIndex(void);
+		bool		_displayContact(std::string const input) const;
+		void		_displayContactBook(void) const;
+		void		_printContactInfoToTable(int const index) const;
+		void		_printTableString(std::string str) const;
 
 	public:
 		PhoneBook(void);
@@ -35,6 +36,6 @@ class PhoneBook
 		std::string	deleteSpaces(std::string str);
 		bool		newContact(void);
 		bool		searchContact(void);
-		void		showContact(int i) const;
+		void		showContact(int index) const;
 };
 #endif

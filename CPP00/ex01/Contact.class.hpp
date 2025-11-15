@@ -40,6 +40,6 @@ class Contact
 		bool				setNickname(std::string str);
 		bool				setNumber(std::string const str);
 		bool				setSecret(std::string const str);
-		bool				displayInfo(std::string const str);
+		bool				displayInfo(void) const;
 };
 #endif
