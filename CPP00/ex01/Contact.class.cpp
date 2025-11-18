@@ -85,7 +85,7 @@ bool	Contact::setLastName(std::string str)
 		return (false);
 	}
 	for (std::string::iterator i = str.begin(); i != str.end(); i++)
-		*i = std::toupper(*i);
+		str[0] = std::toupper(str[0]);
 	this->_lastName = str;
 	return (true);
 }
