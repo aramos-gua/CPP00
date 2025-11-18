@@ -54,9 +54,9 @@ void	PhoneBook::_nextIndex(void)
 }
 void	PhoneBook::_displayContactBook(void) const
 {
-	std::cout	<< ">~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~<" << std::endl
-				<< "|    INDEX   | FIRST NAME | LAST  NAME |  NICKNAME  |" << std::endl
-				<< ">~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~°~~~~~~~~~~~~<" << std::endl;
+	std::cout	<< ">~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~<" << std::endl
+				<< "|   INDEX  |FIRST NAME|LAST  NAME| NICKNAME |" << std::endl
+				<< ">~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~<" << std::endl;
 	for (int i = 0; i < 8; i++)
 		_printContactInfoToTable(i);
 	std::cout << std::endl;
@@ -66,22 +66,22 @@ void	PhoneBook::_printContactInfoToTable(int const index) const
 {
 	if (this->_contactList[index].isEmpty())
 		return ;
-	std::cout << "|" << std::setw(12) << index << "|";
+	std::cout << "|" << std::setw(10) << index << "|";
 	_printTableString(this->_contactList[index].getFirstName());
 	_printTableString(this->_contactList[index].getLastName());
 	_printTableString(this->_contactList[index].getNickname());
 	std::cout << std::endl
-			<< ">~~~~~~~°------------°------------°------------<" << std::endl;
+			<< ">~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~<" << std::endl;
 	return ;
 }
 void	PhoneBook::_printTableString(std::string str) const
 {
-	if (str.length() > 12)
+	if (str.length() > 10)
 	{
 		str.resize(9);
 		str += ".";
 	}
-	std::cout << std::setw(12) << str << "|";
+	std::cout << std::setw(10) << str << "|";
 	return ;
 }
 bool	PhoneBook::_displayContact(std::string const input) const
@@ -102,7 +102,7 @@ bool	PhoneBook::_displayContact(std::string const input) const
 			}
 		}
 	}
-	std::cout << "Error: [" << input << "] is not a valid index. Valid indexes are between 0 and 8" << std::endl;
+	std::cout << "Error: [" << input << "] is not a valid index. Valid indexes are between 0 and 7" << std::endl;
 	return (false);
 }
 /******************************************************************************/
@@ -168,7 +168,7 @@ bool	PhoneBook::searchContact(void)
 {
 	std::string	input;
 
-	std::cout << "+++++++Searching...++++++++++" << std::endl;
+	std::cout << "===============CONTACTS SAVED===============" << std::endl;
 	if (_index == -1)
 	{
 		std::cout << "No contacts yet. Please add a contact first." << std::endl;

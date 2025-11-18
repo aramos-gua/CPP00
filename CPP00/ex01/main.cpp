@@ -38,9 +38,9 @@ int     main(void)
 	while (1)
 	{
 		std::cout << std::endl
-			<< "---------- Main Menu ----------" << std::endl
+			<< "~~~~~~~~~~~~~~~~~~~ Main Menu ~~~~~~~~~~~~~~~~~~~" << std::endl
 			<< std::endl
-			<< "Please type an action" << std::endl << ">";
+			<< "Please type an action between ADD, SEARCH and EXIT" << std::endl << ">";
 		arg = validateInput(&directory);
 		if (arg == "EXIT")
 			break ;
