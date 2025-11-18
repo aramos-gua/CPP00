@@ -15,17 +15,16 @@
 int	main(int argc, char **argv)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	if (argc < 2)
+	i = 0;
+	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	while (argv[i])
+	while (argv[++i])
 	{
-		j = 0;
-		while (i > 0 && argv[i][j])
-			std::cout << (char)std::toupper(argv[i][j++]);
-		i++;
+		std::string s(argv[i]);
+		for (std::string::iterator it = s.begin(); it != s.end(); it++)
+			*it = std::toupper(*it);
+		std::cout << s;
 	}
 	std::cout << "\n";
 	return (0);

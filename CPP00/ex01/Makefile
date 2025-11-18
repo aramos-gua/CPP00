@@ -24,7 +24,7 @@ DARK_YELLOW =	\033[38;5;143m
 
 # Compiler info
 CC = c++
-CPPFLAGS = -Wall -Werror -Wextra
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Dirs
 OBJ_DIR = build
