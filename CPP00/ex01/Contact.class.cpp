@@ -75,6 +75,7 @@ bool	Contact::setFirstName(std::string str)
 	this->_firstName = str;
 	return (true);
 }
+
 bool	Contact::setLastName(std::string str)
 {
 	if (str.empty())
@@ -89,6 +90,7 @@ bool	Contact::setLastName(std::string str)
 	this->_lastName = str;
 	return (true);
 }
+
 bool	Contact::setNickname(std::string str)
 {
 	if (str.empty())
@@ -102,6 +104,7 @@ bool	Contact::setNickname(std::string str)
 	this->_nickname = str;
 	return (true);
 }
+
 bool	Contact::setNumber(std::string const str)
 {
 	if (str.empty())
@@ -114,6 +117,7 @@ bool	Contact::setNumber(std::string const str)
 	this->_number = str;
 	return (true);
 }
+
 bool	Contact::setSecret(std::string const str)
 {
 	if (str.empty())
@@ -131,6 +135,7 @@ bool	Contact::_allIsAlpha(std::string const s)
 			return (false);
 	return (true);
 }
+
 bool	Contact::_allIsDigit(std::string const s)
 {
 	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
@@ -151,6 +156,7 @@ bool	Contact::isEmpty(void) const
 		return (true);
 	return (false);
 }
+
 bool	Contact::displayInfo(void) const
 {
 	if (this->isEmpty())
