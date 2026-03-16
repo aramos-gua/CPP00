@@ -22,6 +22,7 @@ PhoneBook::PhoneBook(void) : _index(-1), _abort(false)
 {
 	return ;
 }
+
 /******************************************************************************/
 /*                                 DESTRUCTOR                                 */
 /******************************************************************************/
@@ -29,6 +30,7 @@ PhoneBook::~PhoneBook(void)
 {
 	return ;
 }
+
 /******************************************************************************/
 /*                                 PRIVATE                                    */
 /******************************************************************************/
@@ -46,12 +48,14 @@ std::string	PhoneBook::_validateInput(std::string const prompt)
 	input = deleteSpaces(input);
 	return (input);
 }
+
 void	PhoneBook::_nextIndex(void)
 {
 	_index++;
 	if (_index > 7)
 		_index = 0;
 }
+
 void	PhoneBook::_displayContactBook(void) const
 {
 	std::cout	<< ">~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~<" << std::endl
@@ -62,6 +66,7 @@ void	PhoneBook::_displayContactBook(void) const
 	std::cout << std::endl;
 	return ;
 }
+
 void	PhoneBook::_printContactInfoToTable(int const index) const
 {
 	if (this->_contactList[index].isEmpty())
@@ -74,6 +79,7 @@ void	PhoneBook::_printContactInfoToTable(int const index) const
 			<< ">~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~|~~~~~~~~~~<" << std::endl;
 	return ;
 }
+
 void	PhoneBook::_printTableString(std::string str) const
 {
 	if (str.length() > 10)
@@ -84,6 +90,7 @@ void	PhoneBook::_printTableString(std::string str) const
 	std::cout << std::setw(10) << str << "|";
 	return ;
 }
+
 bool	PhoneBook::_displayContact(std::string const input) const
 {
 	int	index;
@@ -105,6 +112,7 @@ bool	PhoneBook::_displayContact(std::string const input) const
 	std::cout << "Error: [" << input << "] is not a valid index. Valid indexes are between 0 and 7" << std::endl;
 	return (false);
 }
+
 /******************************************************************************/
 /*                                 PUBLIC                                     */
 /******************************************************************************/
@@ -120,6 +128,7 @@ std::string	PhoneBook::deleteSpaces(std::string str)
 		return (str);
 	return (str.substr(start, end - start + 1));
 }
+
 bool	PhoneBook::newContact(void)
 {
 	std::string	input;
@@ -164,6 +173,7 @@ bool	PhoneBook::newContact(void)
 	std::cout << "Contact saved" << std::endl;
 	return (true);
 }
+
 bool	PhoneBook::searchContact(void)
 {
 	std::string	input;
@@ -181,6 +191,7 @@ bool	PhoneBook::searchContact(void)
 	this->_displayContact((std::string const)input);
 	return (true);
 }
+
 void	PhoneBook::showContact(int index) const
 {
 	if (index >= 0 && index <= 7)
