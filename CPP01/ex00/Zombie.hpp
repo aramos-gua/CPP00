@@ -7,9 +7,8 @@
 class Zombie
 {
 	private:
-		string	name;
+		std::string	name;
 	public:
 		void	anounce(void);
 };
-
 # endif
