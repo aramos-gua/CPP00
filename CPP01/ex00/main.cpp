@@ -1,5 +1,10 @@
 #include "Zombie.hpp"
 
+void	deleteZombie(Zombie *zombie)
+{
+	delete zombie;
+}
+
 int	main(void)
 {
 	//Zombie in stack
@@ -9,6 +14,6 @@ int	main(void)
 	Zombie	*shakira = newZombie("Shakira");
 	shakira->announce();
 
-	delete shakira;
+	deleteZombie(shakira);
 	return (0);
 }
