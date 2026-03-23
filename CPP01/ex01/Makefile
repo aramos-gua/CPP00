@@ -30,13 +30,11 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ_DIR = build
 
 # Target name
-NAME = The-Walking-Bread
+NAME = horde-of-Zombies!
 
 # Files
 SRC = ./main.cpp\
 	  ./Zombie.cpp\
-	  ./newZombie.cpp\
-	  ./randomChump.cpp \
 	  ./zombieHorde.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
