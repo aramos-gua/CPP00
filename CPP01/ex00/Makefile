@@ -30,12 +30,13 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ_DIR = build
 
 # Target name
-NAME = PhoneBook
+NAME = The-Walking-Bread
 
 # Files
 SRC = ./main.cpp\
-	  ./Contact.class.cpp\
-	  ./PhoneBook.class.cpp
+	  ./Zombie.cpp\
+	  ./newZombie.cpp\
+	  ./randomChump.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
