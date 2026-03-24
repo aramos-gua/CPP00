@@ -6,7 +6,7 @@
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 10:08:17 by aramos            #+#    #+#             */
-/*   Updated: 2026/03/24 10:08:18 by aramos           ###   ########.fr       */
+/*   Updated: 2026/03/24 17:04:12 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 # define HUMANB_HPP
 
 # include <iostream>
+# include "Weapon.hpp"
 
 class HumanB
 {
 	private:
+		std::string	name;
+		Weapon		*weapon;
 	public:
-		HumanB();
+		HumanB(std::string name, Weapon *w);
 		~HumanB();
 		void	attack();
 };
+#endif

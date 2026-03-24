@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/24 10:08:21 by aramos            #+#    #+#             */
-/*   Updated: 2026/03/24 19:12:18 by aramos           ###   ########.fr       */
+/*   Created: 2026/03/24 17:01:06 by aramos            #+#    #+#             */
+/*   Updated: 2026/03/24 17:50:08 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-# include <iostream>
-# include "Weapon.hpp"
-
-class HumanA
+int	main(void)
 {
-	private:
-		std::string	name;
-		Weapon		&weapon;
-	public:
-		HumanA(std::string name, Weapon &w);
-		~HumanA();
-		void	attack();
-};
-#endif
+	Weapon	crossbow;
+	Weapon	knife;
+	Weapon	gun;
+	HumanA	leon("Leon", knife);
+
+	crossbow.setType("Long Range");
+	knife.setType("Short Range");
+	knife.setType("Fire Arm");
+	leon.attack();
+	return (0);
+}

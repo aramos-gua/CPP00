@@ -6,7 +6,7 @@
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 10:08:04 by aramos            #+#    #+#             */
-/*   Updated: 2026/03/24 10:08:09 by aramos           ###   ########.fr       */
+/*   Updated: 2026/03/24 17:48:45 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WEAPON_HPP
 
 # include <iostream>
+# include <string>
 
 class Weapon
 {
@@ -22,6 +23,7 @@ class Weapon
 	public:
 		Weapon();
 		~Weapon();
-		std::string	*getType();
-		void		setType(std::string type);
+		const std::string	&getType() const;
+		void				setType(std::string t);
 };
+#endif
