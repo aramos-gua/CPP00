@@ -22,8 +22,9 @@ class HumanB
 		std::string	name;
 		Weapon		*weapon;
 	public:
-		HumanB(std::string name, Weapon *w);
+		HumanB(std::string name);
 		~HumanB();
 		void	attack();
+		void	setWeapon(Weapon *newWeapon);
 };
 #endif

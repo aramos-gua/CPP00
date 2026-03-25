@@ -20,10 +20,14 @@ int	main(void)
 	Weapon	knife;
 	Weapon	gun;
 	HumanA	leon("Leon", knife);
+	HumanB	ashley("Ashley");
 
 	crossbow.setType("Long Range");
 	knife.setType("Short Range");
-	knife.setType("Fire Arm");
+	gun.setType("Fire Arm");
 	leon.attack();
+	ashley.attack();
+	ashley.setWeapon(&gun);
+	ashley.attack();
 	return (0);
 }

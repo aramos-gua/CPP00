@@ -15,18 +15,26 @@
 /******************************************************************************/
 /*                                 CONSTRUCTOR                                */
 /******************************************************************************/
-HumanB::HumanB(std::string name, Weapon *w) : name(name), weapon(w)
+HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 {
 	//this->name = name;
-	//this->weapon = w;
 	return ;
 }
 
 /******************************************************************************/
 /*                                  DESTRUCTOR                                */
 /******************************************************************************/
-HumanB::~HumanB(void)
+HumanB::~HumanB()
 {
+	return ;
+}
+
+/******************************************************************************/
+/*                                 SETTER                                     */
+/******************************************************************************/
+void	HumanB::setWeapon(Weapon *newWeapon)
+{
+	weapon = newWeapon;
 	return ;
 }
 
@@ -35,5 +43,8 @@ HumanB::~HumanB(void)
 /******************************************************************************/
 void	HumanB::attack(void)
 {
-	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	if (weapon != NULL)
+		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	else
+		std::cout << name << " attacks with nothing but punches." << std::endl;
 }
