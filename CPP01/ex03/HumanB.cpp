@@ -32,9 +32,9 @@ HumanB::~HumanB()
 /******************************************************************************/
 /*                                 SETTER                                     */
 /******************************************************************************/
-void	HumanB::setWeapon(Weapon *newWeapon)
+void	HumanB::setWeapon(Weapon &newWeapon)
 {
-	weapon = newWeapon;
+	weapon = &newWeapon;
 	return ;
 }
 

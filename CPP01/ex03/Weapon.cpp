@@ -15,7 +15,7 @@
 /******************************************************************************/
 /*                                 CONSTRUCTOR                                */
 /******************************************************************************/
-Weapon::Weapon()
+Weapon::Weapon(std::string description) : type(description)
 {
 	return ;
 }
@@ -32,7 +32,6 @@ const std::string	&Weapon::getType(void) const
 {
 	return (type);
 }
-
 
 void	Weapon::setType(std::string t)
 {

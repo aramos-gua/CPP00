@@ -30,7 +30,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ_DIR = build
 
 # Target name
-NAME = Weapon
+NAME = Weaponz
 
 # Files
 SRC = ./main.cpp\
