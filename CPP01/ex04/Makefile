@@ -30,7 +30,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ_DIR = build
 
 # Target name
-NAME = PhoneBook
+NAME = 'ENS(Ed-Not-Sed)'
 
 # Files
 SRC = ./main.cpp
@@ -58,6 +58,7 @@ clean:
 # Clean everything
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f *.replace
 	@echo "\n ${GREEN} Cleaned $(NAME) ${DEF_COLOR}\n"
 
 # Rebuilds everything
