@@ -16,24 +16,36 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
+	if (argc != 4)
 	{
 		std::cout << "Usage: <filename> <string1> <string2>" << std::endl;
 		return (1);
 	}
+	size_t			pos;
+	std::string		s1;
+	std::string		s2;
 	std::string		line;
 	std::string		fileName = argv[1];
 	std::ifstream	inFile(fileName);
 	std::ofstream	outFile(fileName + ".replace");
 
+	s1 = argv[2];
+	s2 = argv[3];
 	if (inFile && outFile)
 	{
 		while(std::getline(inFile, line))
 		{
-			if (line.find() != 0)
-				std::cout << "s2 is in s1" << std::endl;
-			else
-				std::cout << "s2 is NOT in s1" << std::endl;
+			pos = 0;
+			{
+				if (s1.empty() || s2.empty())
+					return (1);
+				while ((pos = line.find(s1, pos)) != std::string::npos)
+				{
+					line.erase(pos, s1.length());
+					line.insert(pos, s2);
+					pos += s2.size();
+				}
+			}
 		}
 	}
 	return (0);
