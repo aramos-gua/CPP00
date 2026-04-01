@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 11:29:01 by aramos            #+#    #+#             */
-/*   Updated: 2026/04/01 15:45:07 by aramos           ###   ########.fr       */
+/*   Created: 2026/04/01 10:37:04 by aramos            #+#    #+#             */
+/*   Updated: 2026/04/01 10:38:28 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include "Fixed.hpp"
 
-# include <iostream>
-
-class	Fixed
+int	main(void)
 {
-	private:
-		int					value;
-		static const int	fractional_bits = 8;
-	public:
-		Fixed();
-		Fixed(const Fixed &other);
-		Fixed &operator=(const Fixed &other);
-		~Fixed();
+	Fixed	a;
+	Fixed	b(a);
+	Fixed	c;
 
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
-};
-# endif
+	c = b;
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return (0);
+}
