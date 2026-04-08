@@ -26,12 +26,14 @@ Fixed::Fixed(const int num)
 {
 	std::cout << "Int constructor called" << std::endl;
 	value = num << fractionalBits;
+	return ;
 }
 
 Fixed::Fixed(const float num)
 {
 	std::cout << "Float constructor called" << std::endl;
 	value = roundf(num * (1 << fractionalBits));
+	return ;
 }
 /* ************************************************************************** */
 /*                               DESTRUCTOR                                   */
@@ -39,6 +41,7 @@ Fixed::Fixed(const float num)
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -48,6 +51,7 @@ Fixed::Fixed(const Fixed &other)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -72,6 +76,7 @@ int		Fixed::getRawBits(void) const
 void	Fixed::setRawBits(int const raw)
 {
 	value = raw;
+	return ;
 }
 
 float	Fixed::toFloat(void) const
