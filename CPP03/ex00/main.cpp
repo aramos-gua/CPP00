@@ -14,8 +14,12 @@
 
 int	main(void)
 {
-	ClapTrap	warrior("Junajpu");
+	ClapTrap	a("Hero");
 
-	warrior.attack("Ixbalanque");
+	a.attack("Enemy");
+	a.takeDamage(5);
+	a.beRepaired(3);
+	// a.takeDamage(20);
+	a.attack("Enemy");
 	return (0);
 }

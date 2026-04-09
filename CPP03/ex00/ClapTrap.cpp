@@ -21,7 +21,7 @@ ClapTrap::ClapTrap(std::string n)
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap " << _name << " constructor called."<< std::endl;
 	return ;
 }
 
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(std::string n)
 /* ************************************************************************** */
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "ClapTrap " << _name << " destructor called."<< std::endl;
 	return ;
 }
 
@@ -39,23 +39,46 @@ ClapTrap::~ClapTrap(void)
 /* ************************************************************************** */
 void	ClapTrap::attack(const std::string& target)
 {
+	if (this->_hitPoints == 0 || this->_energyPoints == 0)
+	{
+		std::cout << "ClapTrap " << _name << " can't attack! Reason: ";
+		if (this->_hitPoints == 0)
+			std::cout << "Dead." << std::endl;
+		else
+			std::cout << "Not enough energy." << std::endl;
+		return ;
+	}
 	this->_energyPoints--;
-	std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
 	return ;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (this->_hitPoints == 0)
+		return ;
 	if (amount >= this->_hitPoints)
+	{
 		this->_hitPoints = 0;
-	this->_hitPoints -= amount;
-	std::cout << "ClapTrap " << _name << " takes " << amount << " of damage!" << std::endl;
+		std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage ";
+		std::cout << "and dies!" << std::endl;
+		return ;
+	}
+	else
+		this->_hitPoints -= amount;
+	std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 	return ;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	this->_energyPoints += amount;
+	if (this->_hitPoints == 0 || this->_energyPoints == 0)
+	{
+		std::cout << "ClapTrap " << _name << " can't repair itself!" << std::endl;
+		return ;
+	}
+	this->_energyPoints--;
+	this->_hitPoints += amount;
 	std::cout << "ClapTrap " << _name << " got repaired! It regains " << amount << " hit points!" << std::endl;
 	return ;
 }
