@@ -25,6 +25,10 @@ ClapTrap::ClapTrap(std::string n)
 	_energyPoints = 10;
 	_attackDamage = 0;
 	std::cout << "ClapTrap " << _name << " constructor called."<< std::endl;
+	std::cout << "name: "<< _name << std::endl;
+	std::cout << "hitPoints: "<< _hitPoints << std::endl;
+	std::cout << "energyPoints: "<< _energyPoints << std::endl;
+	std::cout << "attackDamage: "<< _attackDamage << std::endl;
 	return ;
 }
 

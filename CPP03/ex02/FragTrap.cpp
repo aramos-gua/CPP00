@@ -21,6 +21,10 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 	std::cout << "FragTrap " << _name << " constructor called." << std::endl;
+	std::cout << "name: "<< _name << std::endl;
+	std::cout << "hitPoints: "<< _hitPoints << std::endl;
+	std::cout << "energyPoints: "<< _energyPoints << std::endl;
+	std::cout << "attackDamage: "<< _attackDamage << std::endl;
 }
 
 /* ************************************************************************** */
