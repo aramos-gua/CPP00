@@ -15,9 +15,9 @@
 
 int	main(void)
 {
-	ScavTrap	bot("Guardian");
+	ScavTrap	bot("Harry Poah");
 
-	bot.attack("enemy");
+	bot.attack("Draco");
 	bot.guardGate();
 	return (0);
 }

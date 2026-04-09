@@ -17,7 +17,10 @@
 /* ************************************************************************** */
 ClapTrap::ClapTrap(std::string n)
 {
-	_name = n;
+	if (n.empty())
+		_name = "Bob";
+	else
+		_name = n;
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;

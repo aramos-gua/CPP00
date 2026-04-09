@@ -14,12 +14,12 @@
 
 int	main(void)
 {
-	ClapTrap	a("Hero");
+	ClapTrap	a("Warrior");
 
-	a.attack("Enemy");
+	a.attack("Ninja");
 	a.takeDamage(5);
 	a.beRepaired(3);
 	// a.takeDamage(20);
-	a.attack("Enemy");
+	a.attack("Ninja");
 	return (0);
 }
