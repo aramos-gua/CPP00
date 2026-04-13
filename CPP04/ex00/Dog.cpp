@@ -6,7 +6,7 @@
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:12:39 by aramos            #+#    #+#             */
-/*   Updated: 2026/04/13 17:21:50 by aramos           ###   ########.fr       */
+/*   Updated: 2026/04/13 19:27:50 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::Dog()
 /* ************************************************************************** */
 /*                              COPY COSTRUCTOR                               */
 /* ************************************************************************** */
-Dog::Dog(const Dog &other)
+Dog::Dog(const Dog &other) : Animal(other)
 {
 	std::cout << "Dog copy contuctor called" << std::endl;
 	this->type = other.type;

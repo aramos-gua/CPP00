@@ -1,59 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 17:22:00 by aramos            #+#    #+#             */
-/*   Updated: 2026/04/13 19:27:43 by aramos           ###   ########.fr       */
+/*   Created: 2026/04/13 19:20:12 by aramos            #+#    #+#             */
+/*   Updated: 2026/04/13 19:25:38 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
 /* ************************************************************************** */
-/*                              CONSTRUCTOR                                   */
+/*                                 CONSTRUCTOR                                */
 /* ************************************************************************** */
-Cat::Cat()
+WrongCat::WrongCat()
 {
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
+	std::cout << "WrongCat constructor called" << std::endl;
+	type = "WrongCat";
 }
 
 /* ************************************************************************** */
-/*                              COPY CONSTRUCTOR                               */
+/*                              COPY CONSTRUCTOR                              */
 /* ************************************************************************** */
-Cat::Cat(const Cat &other) : Animal(other)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
-	std::cout << "Cat copy constructor called" << std::endl;
+	std::cout << "WrongCat copy constructor called" << std::endl;
 	this->type = other.type;
 }
 
 /* ************************************************************************** */
-/*                         COPY ASSIGNMENT OPERATOR                           */
+/*                          COPY ASSIGNMENT OPERATOR                          */
 /* ************************************************************************** */
-Cat	&Cat::operator=(const Cat &other)
+WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-	std::cout << "Cat copy assignment called" << std::endl;
+	std::cout << "WrongCat copy assignment called" << std::endl;
 	if (this != &other)
 		this->type = other.type;
 	return (*this);
-
 }
 
 /* ************************************************************************** */
-/*                               DESTRUCTOR                                   */
+/*                                  DESTRUCTOR                                */
 /* ************************************************************************** */
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	std::cout << "Cat destructor called" << std::endl;
+	std::cout << "WrongCat destructor called" << std::endl;
 }
 
 /* ************************************************************************** */
 /*                               MEMBER FUNCTIONS                             */
 /* ************************************************************************** */
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Meow! I'm a cat!" << std::endl;
+	std::cout << "Moooo, I am a dog!" << std::endl;
 }

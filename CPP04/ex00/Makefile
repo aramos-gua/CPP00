@@ -34,22 +34,24 @@ NAME = Animals
 
 # Files
 SRC = ./main.cpp\
-	  ./Animals.cpp\
+	  ./Animal.cpp\
 	  ./Dog.cpp\
-	  ./Cat.cpp
+	  ./Cat.cpp \
+	  ./WrongCat.cpp \
+	  ./WrongAnimal.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
 # Create program
 $(NAME): $(OBJ)
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "\n${GREEN} Created $(NAME) ${DEF_COLOR}\n"
 
 # Compiles .cpp into .o files
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir --p $(dir $@)
 	@echo "${MAGENTA} ~ ${BROWN} Compiling... ${MAGENTA}-> ${CYAN}$< ${DEF_COLOR}"
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Build all
 all: $(NAME)

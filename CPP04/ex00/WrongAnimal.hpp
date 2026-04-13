@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 15:19:25 by aramos            #+#    #+#             */
-/*   Updated: 2026/04/13 19:27:47 by aramos           ###   ########.fr       */
+/*   Created: 2026/04/13 19:09:28 by aramos            #+#    #+#             */
+/*   Updated: 2026/04/13 19:27:43 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include "Animal.hpp"
 
-class Cat : public Animal
+class WrongAnimal
 {
+	protected:
+		std::string	type;
 	public:
-		Cat();
-		Cat(const Cat &other);
-		Cat &operator=(const Cat &other);
-		~Cat();
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal &other);
+		WrongAnimal &operator=(const WrongAnimal &other);
+		virtual ~WrongAnimal();
 
-		void	makeSound() const;
+		virtual void	makeSound() const;
 };
 #endif
