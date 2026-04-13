@@ -23,19 +23,20 @@ DARK_GREEN =	\033[38;2;75;179;82m
 DARK_YELLOW =	\033[38;5;143m
 
 # Compiler info
-CC = c++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Dirs
 OBJ_DIR = build
 
 # Target name
-NAME = PhoneBook
+NAME = Animals
 
 # Files
 SRC = ./main.cpp\
-	  ./Contact.class.cpp\
-	  ./PhoneBook.class.cpp
+	  ./Animals.cpp\
+	  ./Dog.cpp\
+	  ./Cat.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
