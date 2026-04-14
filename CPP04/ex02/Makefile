@@ -37,6 +37,7 @@ SRC = ./main.cpp\
 	  ./src/Animal.cpp\
 	  ./src/Dog.cpp\
 	  ./src/Cat.cpp \
+	  ./src/Brain.cpp \
 	  ./src/WrongCat.cpp \
 	  ./src/WrongAnimal.cpp
 
