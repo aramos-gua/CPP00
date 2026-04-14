@@ -56,3 +56,8 @@ void	WrongAnimal::makeSound() const
 {
 	std::cout << "Wrong Sound of Wrong Animal" << std::endl;
 }
+
+void	WrongAnimal::makeSound2() const
+{
+	std::cout << "WrongAnimal: This should print if method is not virtual" << std::endl;
+}

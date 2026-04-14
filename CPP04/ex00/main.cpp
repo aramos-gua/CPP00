@@ -23,12 +23,22 @@ int	main(void)
 	const Animal		*i = new Cat();
 	const WrongAnimal	*wrong = new WrongCat();
 
+	std::cout << std::endl << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
+	std::cout << std::endl << std::endl;
+	std::cout << "Dog makes a sound: ";
 	j->makeSound();
+	std::cout << "Cat makes a sound: ";
+	i->makeSound();
+	std::cout << "Animal makes a sound: ";
 	meta->makeSound();
+	std::cout << "Wrong animal makes a sound from a virtual method: ";
 	wrong->makeSound();
+	std::cout << "Wrong animal makes a sound from a non-virtual method: ";
+	wrong->makeSound2();
+	std::cout << std::endl << std::endl;
+
 	delete j;
 	delete i;
 	delete meta;

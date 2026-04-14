@@ -54,5 +54,10 @@ WrongCat::~WrongCat()
 /* ************************************************************************** */
 void	WrongCat::makeSound() const
 {
-	std::cout << "Moooo, I am a dog!" << std::endl;
+	std::cout << "Moooo, I am a dog! (virtual)" << std::endl;
+}
+
+void	WrongCat::makeSound2() const
+{
+	std::cout << "WrongCat: This should print if method is virtual!" << std::endl;
 }

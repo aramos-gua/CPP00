@@ -26,5 +26,6 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 
 		virtual void	makeSound() const;
+		void			makeSound2() const;
 };
 #endif
