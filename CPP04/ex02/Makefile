@@ -23,32 +23,35 @@ DARK_GREEN =	\033[38;2;75;179;82m
 DARK_YELLOW =	\033[38;5;143m
 
 # Compiler info
-CC = c++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Dirs
 OBJ_DIR = build
 
 # Target name
-NAME = PhoneBook
+NAME = Animals
 
 # Files
 SRC = ./main.cpp\
-	  ./Contact.class.cpp\
-	  ./PhoneBook.class.cpp
+	  ./src/Animal.cpp\
+	  ./src/Dog.cpp\
+	  ./src/Cat.cpp \
+	  ./src/WrongCat.cpp \
+	  ./src/WrongAnimal.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
 # Create program
 $(NAME): $(OBJ)
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "\n${GREEN} Created $(NAME) ${DEF_COLOR}\n"
 
 # Compiles .cpp into .o files
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir --p $(dir $@)
 	@echo "${MAGENTA} ~ ${BROWN} Compiling... ${MAGENTA}-> ${CYAN}$< ${DEF_COLOR}"
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Build all
 all: $(NAME)
