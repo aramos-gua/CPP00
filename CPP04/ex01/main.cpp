@@ -16,6 +16,15 @@
 #include "./inc/WrongAnimal.hpp"
 #include "./inc/WrongCat.hpp"
 
+/*other test
+	// Dog	sparky;
+	// Dog	fluf = sparky;
+	// sparky = fluf;
+	//
+	// Cat	meow;
+	// Cat	snow;
+	// snow = meow;
+*/
 int	main(void)
 {
 	Animal	*pack[100];
