@@ -34,11 +34,11 @@ NAME = Animals
 
 # Files
 SRC = ./main.cpp\
-	  ./Animal.cpp\
-	  ./Dog.cpp\
-	  ./Cat.cpp \
-	  ./WrongCat.cpp \
-	  ./WrongAnimal.cpp
+	  ./src/Animal.cpp\
+	  ./src/Dog.cpp\
+	  ./src/Cat.cpp \
+	  ./src/WrongCat.cpp \
+	  ./src/WrongAnimal.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 

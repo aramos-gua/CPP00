@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 15:32:16 by aramos            #+#    #+#             */
-/*   Updated: 2026/04/13 19:27:46 by aramos           ###   ########.fr       */
+/*   Created: 2026/04/13 17:12:39 by aramos            #+#    #+#             */
+/*   Updated: 2026/04/13 19:27:50 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../inc/Dog.hpp"
 
 /* ************************************************************************** */
 /*                              CONSTRUCTOR                                   */
 /* ************************************************************************** */
-Animal::Animal()
+Dog::Dog()
 {
-	std::cout << "Animal constuctor called" << std::endl;
-	this->type = "Animal";
+	std::cout << "Dog constuctor called" << std::endl;
+	this->type = "Dog";
 }
 
 /* ************************************************************************** */
 /*                              COPY COSTRUCTOR                               */
 /* ************************************************************************** */
-Animal::Animal(const Animal &other)
+Dog::Dog(const Dog &other) : Animal(other)
 {
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << "Dog copy contuctor called" << std::endl;
 	this->type = other.type;
 }
 
 /* ************************************************************************** */
 /*                         COPY ASSIGNMENT OPERATOR                           */
 /* ************************************************************************** */
-Animal &Animal::operator=(const Animal &other)
+Dog &Dog::operator=(const Dog &other)
 {
-	std::cout << "Animal copy assignment called" << std::endl;
+	std::cout << "Dog copy assignment called" << std::endl;
 	if (this != &other)
 		this->type = other.type;
 	return (*this);
@@ -44,20 +44,15 @@ Animal &Animal::operator=(const Animal &other)
 /* ************************************************************************** */
 /*                               DESTRUCTOR                                   */
 /* ************************************************************************** */
-Animal::~Animal()
+Dog::~Dog()
 {
-	std::cout << "Animal destructor called" << std::endl;
+	std::cout << "Dog destuctor called" << std::endl;
 }
 
 /* ************************************************************************** */
 /*                               MEMBER FUNCTIONS                             */
 /* ************************************************************************** */
-void	Animal::makeSound() const
+void	Dog::makeSound() const
 {
-	std::cout << "Animal makeSound called" << std::endl;
-}
-
-std::string Animal::getType() const
-{
-    return (this->type);
+	std::cout << "Woof Woof! I'm a dog, yo!" << std::endl;
 }
