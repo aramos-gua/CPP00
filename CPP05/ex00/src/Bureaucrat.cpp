@@ -82,9 +82,13 @@ void	Bureaucrat::incrementGrade()
 
 void	Bureaucrat::decrementGrade()
 {
-	if (_grade > 150)
+	if (_grade >= 150)
 		throw GradeTooLowException();
 	_grade += 1;
 }
 
-
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
+{
+	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+	return out;
+}
