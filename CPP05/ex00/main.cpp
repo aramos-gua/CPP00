@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ostream>
 #include "inc/Bureaucrat.hpp"
 
 int	main(void)
 {
 	Bureaucrat a("Alex", 1);
 	int c = a.getGrade();
+	std::cout << "First test : name[Alex], grade[1], then increment by 1" << std::endl;
 	try
 	{
 		std::cout << c << std::endl;
@@ -27,9 +27,11 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << std::endl;
+
+	std::cout << "Second test : name[Alex], grade[1], then decrement to 150, then try to decrement 1 more" << std::endl;
 	try
 	{
 		std::string	b = a.getName();
@@ -44,6 +46,32 @@ int	main(void)
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "Third test : name[jamon], grade[0]" << std::endl;
+	try
+	{
+		Bureaucrat	x("jamon", 0);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "Fourth test : name[queso], grade[151]" << std::endl;
+	try
+	{
+		Bureaucrat	y("queso", 151);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() <<std::endl;
 	}
 	return (0);
 }
