@@ -37,19 +37,20 @@ class	Form
 
 		void	beSigned(const Bureaucrat &bureaucrat);
 
-		class	GradeTooHighException() : public::exception
+		class	GradeTooHighException : public std::exception
 		{
 			public :
 				const char	*what() const throw();
-		}
+		};
 
-		class	GradeTooLowException() : public::exception
+		class	GradeTooLowException : public std::exception
 		{
 			public :
-				constchar	*what() const throw();
-		}
+				const char	*what() const throw();
+		};
 
-		std::ostream &operator<<(std::ostream &out, const Form &form);
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &form);
 
 #endif
