@@ -34,7 +34,8 @@ NAME = Bureaucrat
 
 # Files
 SRC = ./main.cpp\
-	  ./src/Bureaucrat.cpp
+	  ./src/Bureaucrat.cpp\
+	  ./src/Form.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 

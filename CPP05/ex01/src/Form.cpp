@@ -42,7 +42,7 @@ Form::Form(const Form &other) :
 /* ************************************************************************** */
 /*                          COPY ASSIGNMENT OPERATOR                          */
 /* ************************************************************************** */
-Form::Form &operator=(const Form &other)
+Form &Form::operator=(const Form &other)
 {
 	if (this != &other)
 		_signed = other._signed;
@@ -64,17 +64,17 @@ std::string Form::getName() const
 	return (_name);
 }
 
-std::string Form::getSigned() const
+bool	Form::getSigned() const
 {
 	return (_signed);
 }
 
-std::string Form::getGrade2sign() const
+int	Form::getGrade2sign() const
 {
 	return (_grade2sign);
 }
 
-std::string Form::getGrade2exec() const
+int	Form::getGrade2exec() const
 {
 	return (_grade2exec);
 }
@@ -101,10 +101,10 @@ const char	*Form::GradeTooLowException::what() const throw()
 std::ostream	&operator<<(std::ostream &out, const Form &form)
 {
 	out << "Form " <<form.getName() << ", signed: ";
-	if (form.getSigned)
+	if (form.getSigned())
 		out << "yes";
 	else
 		out << "no";
-	out << ", grade required to sign: " << form.grade2sign() << ", grade required to execute: " << form.grade2exec();
+	out << ", grade required to sign: " << form.getGrade2sign() << ", grade required to execute: " << form.getGrade2exec();
 	return (out);
 }
