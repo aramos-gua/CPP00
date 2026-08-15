@@ -1,108 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos <contact@aramos.dev>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/30 14:58:39 by aramos            #+#    #+#             */
-/*   Updated: 2026/08/14 22:19:37 by aramos           ###   ########.fr       */
+/*   Created: 2026/08/14 18:07:39 by aramos            #+#    #+#             */
+/*   Updated: 2026/08/14 22:27:27 by aramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Bureaucrat.hpp"
-#include "../inc/AForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 /* ************************************************************************** */
 /*                              CONSTRUCTOR                                   */
 /* ************************************************************************** */
-Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) :
+    AForm("RobotomyRequestForm", 72, 45),
+    _target(target)
 {
-	if (grade < 1)
-		throw GradeTooHighException();
-	else if (grade > 150)
-		throw GradeTooLowException();
-	this->_grade = grade;
 }
 
 /* ************************************************************************** */
 /*                              COPY CONSTRUCTOR                              */
 /* ************************************************************************** */
-Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) :
+    AForm(other),
+    _target(other._target)
 {
-	_grade = other._grade;
 }
+
 
 /* ************************************************************************** */
 /*                          COPY ASSIGNMENT OPERATOR                          */
 /* ************************************************************************** */
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
-	if (this != &other)
-		_grade = other._grade;
-	return (*this);
+    if (this != &other)
+        AForm::operator=(other);
+    return (*this);
 }
 
 /* ************************************************************************** */
 /*                               DESTRUCTOR                                   */
 /* ************************************************************************** */
-Bureaucrat::~Bureaucrat()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
-
 }
 
 /* ************************************************************************** */
 /*                               MEMBER FUNCTIONS                             */
 /* ************************************************************************** */
-std::string	Bureaucrat::getName() const
+void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	return (_name);
-}
-
-int			Bureaucrat::getGrade() const
-{
-	return (_grade);
-}
-
-const char	*Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return ("Grade too high");
-}
-
-const char	*Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return ("Grade too low");
-}
-
-void	Bureaucrat::incrementGrade()
-{
-	if (_grade <= 1)
-		throw GradeTooHighException();
-	_grade -= 1;
-}
-
-void	Bureaucrat::decrementGrade()
-{
-	if (_grade >= 150)
-		throw GradeTooLowException();
-	_grade += 1;
-}
-
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
-{
-	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
-	return out;
-}
-
-void	Bureaucrat::signForm(AForm &form)
-{
-	try
-	{
-		form.beSigned(*this);
-		std::cout << _name << " signed " << form.getName() << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
-	}
+    checkExec(executor);
+    std::cout << "BrRrRrRrRrRrR... *drilling noises*..." << std::endl;
+    if (std::rand() % 2 == 0)
+        std::cout << _target << " has been robotomized successfully!" << std::endl;
+    else
+        std::cout << "Robotomy failed for " << _target << "." << std::endl;
 }

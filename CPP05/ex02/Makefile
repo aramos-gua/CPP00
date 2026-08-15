@@ -36,7 +36,9 @@ NAME = Bureaucrat
 SRC = ./main.cpp\
 	  ./src/Bureaucrat.cpp\
 	  ./src/AForm.cpp\
-	  ./src/ShrubberyCreationForm.cpp
+	  ./src/ShrubberyCreationForm.cpp\
+	  ./src/RobotomyRequestForm.cpp\
+	  ./src/PresidentialPardonForm.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 

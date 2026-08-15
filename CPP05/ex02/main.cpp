@@ -13,14 +13,18 @@
 #include "inc/Bureaucrat.hpp"
 #include "inc/AForm.hpp"
 #include "inc/ShrubberyCreationForm.hpp"
+#include "inc/RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 int	main(void)
 {
+		std::srand(static_cast<unsigned int>(std::time(0)));
 	// Test 1: everything works, tree should get written to "home_shrubbery"
 	std::cout << "--- Test 1: valid sign + execute ---" << std::endl;
 	try
 	{
-		Bureaucrat highGrade("Bob", 1); // grade 1, highest possible
+		Bureaucrat highGrade("Bob", 1);
 		ShrubberyCreationForm form("home");
 
 		std::cout << form << std::endl;
@@ -34,36 +38,53 @@ int	main(void)
 		std::cout << "Unexpected error: " << e.what() << std::endl;
 	}
 
-	// Test 2: try to execute WITHOUT signing first -> should throw, no file created
-	// std::cout << "\n--- Test 2: execute without signing ---" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat highGrade("Alice", 1);
-	// 	ShrubberyCreationForm form("office");
-	//
-	// 	form.execute(highGrade); // never signed
-	// 	std::cout << "This should not print" << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << "Correctly caught: " << e.what() << std::endl;
-	// }
-	//
-	// // Test 3: signed, but executor's grade is too low -> should throw
-	// std::cout << "\n--- Test 3: grade too low to execute ---" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat lowGrade("Intern", 150);   // grade 150, lowest possible
-	// 	Bureaucrat highGrade("Boss", 1);
-	// 	ShrubberyCreationForm form("garden");
-	//
-	// 	form.beSigned(highGrade);    // signed by someone with high enough grade
-	// 	form.execute(lowGrade);      // but executed by someone too low-ranked
-	// 	std::cout << "This should not print" << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << "Correctly caught: " << e.what() << std::endl;
-	// }
+	//Test 2: try to execute WITHOUT signing first -> should throw, no file created
+	std::cout << "\n--- Test 2: execute without signing ---" << std::endl;
+	try
+	{
+		Bureaucrat highGrade("Alice", 1);
+		ShrubberyCreationForm form("office");
+	
+		form.execute(highGrade); // never signed
+		std::cout << "This should not print" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Correctly caught: " << e.what() << std::endl;
+	}
+	
+	// Test 3: signed, but executor's grade is too low -> should throw
+	std::cout << "\n--- Test 3: grade too low to execute ---" << std::endl;
+	try
+	{
+		Bureaucrat lowGrade("Intern", 150);   // grade 150, lowest possible
+		Bureaucrat highGrade("Boss", 1);
+		ShrubberyCreationForm form("garden");
+	
+		form.beSigned(highGrade);    // signed by someone with high enough grade
+		form.execute(lowGrade);      // but executed by someone too low-ranked
+		std::cout << "This should not print" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Correctly caught: " << e.what() << std::endl;
+	}
+
+	// Test 4: Robotomization form test
+	std::cout << "\n--- Test 4: RobotomyRequestForm execution ---" << std::endl;
+	try
+	{
+		Bureaucrat highGrade("Dr. Robotnik", 1);
+		RobotomyRequestForm robotomyForm("Sonic");
+
+		std::cout << robotomyForm << std::endl;
+		robotomyForm.beSigned(highGrade);
+		std::cout << robotomyForm << std::endl;
+		robotomyForm.execute(highGrade);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Unexpected error: " << e.what() << std::endl;
+	}
 	return (0);
 }
