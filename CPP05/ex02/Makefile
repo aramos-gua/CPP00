@@ -63,6 +63,8 @@ clean:
 # Clean everything
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f "home_shrubbery"
+	@rm -f "polymorphic_test_shrubbery"
 	@echo "\n ${GREEN} Cleaned $(NAME) ${DEF_COLOR}\n"
 
 # Rebuilds everything
