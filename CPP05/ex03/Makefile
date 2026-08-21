@@ -34,8 +34,9 @@ NAME = Bureaucrat
 
 # Files
 SRC = ./main.cpp\
-	  ./src/Bureaucrat.cpp\
 	  ./src/AForm.cpp\
+	  ./src/Intern.cpp\
+	  ./src/Bureaucrat.cpp\
 	  ./src/ShrubberyCreationForm.cpp\
 	  ./src/RobotomyRequestForm.cpp\
 	  ./src/PresidentialPardonForm.cpp

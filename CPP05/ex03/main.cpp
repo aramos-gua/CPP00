@@ -12,9 +12,7 @@
 
 #include "inc/Bureaucrat.hpp"
 #include "inc/AForm.hpp"
-#include "inc/ShrubberyCreationForm.hpp"
-#include "inc/RobotomyRequestForm.hpp"
-#include "inc/PresidentialPardonForm.hpp"
+#include "inc/Intern.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -24,140 +22,89 @@ int main()
 	std::srand(static_cast<unsigned int>(std::time(0)));
 
 	std::cout << "=========================================" << std::endl;
-	std::cout << " AForm is abstract - cannot instantiate" << std::endl;
+	std::cout << " Intern creates each known form type" << std::endl;
 	std::cout << "=========================================" << std::endl;
-	// Uncomment the line below to confirm it fails to compile:
-	// AForm form("Test", 1, 1);
-	std::cout << "(skipped - would not compile, as expected)" << std::endl;
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " Bureaucrat grade bounds" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	try
 	{
-		Bureaucrat tooHigh("TooHigh", 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Caught: " << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat tooLow("TooLow", 151);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Caught: " << e.what() << std::endl;
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " ShrubberyCreationForm - success" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	try
-	{
+		Intern	someRandomIntern;
 		Bureaucrat boss("Boss", 1);
-		ShrubberyCreationForm shrub("home");
 
-		std::cout << shrub << std::endl;
-		boss.signForm(shrub);
-		boss.executeForm(shrub);
-		std::cout << "-> check file \"home_shrubbery\"" << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Unexpected: " << e.what() << std::endl;
+		AForm *shrub = someRandomIntern.makeForm("shrubbery creation", "home");
+		AForm *robot = someRandomIntern.makeForm("robotomy request", "Bender");
+		AForm *pardon = someRandomIntern.makeForm("presidential pardon", "Zoidberg");
+
+		if (shrub)
+		{
+			boss.signForm(*shrub);
+			boss.executeForm(*shrub);
+		}
+		if (robot)
+		{
+			boss.signForm(*robot);
+			boss.executeForm(*robot);
+		}
+		if (pardon)
+		{
+			boss.signForm(*pardon);
+			boss.executeForm(*pardon);
+		}
+
+		delete shrub;
+		delete robot;
+		delete pardon;
 	}
 
 	std::cout << "\n=========================================" << std::endl;
-	std::cout << " ShrubberyCreationForm - not signed" << std::endl;
+	std::cout << " Intern - unknown form name" << std::endl;
 	std::cout << "=========================================" << std::endl;
 	{
+		Intern	someRandomIntern;
+		AForm *unknown = someRandomIntern.makeForm("permission to leave early", "Fry");
+
+		if (unknown == 0)
+			std::cout << "Correctly got a null pointer back" << std::endl;
+		else
+		{
+			std::cout << "Unexpected: something was created" << std::endl;
+			delete unknown;
+		}
+	}
+
+	std::cout << "\n=========================================" << std::endl;
+	std::cout << " Intern - full lifecycle incl. sign failure" << std::endl;
+	std::cout << "=========================================" << std::endl;
+	{
+		Intern	someRandomIntern;
+		Bureaucrat intern("Newbie", 150); // very low grade
 		Bureaucrat boss("Boss", 1);
-		ShrubberyCreationForm shrub("unsigned_target");
 
-		boss.executeForm(shrub); // never signed -> prints failure, no throw escapes
+		AForm *form = someRandomIntern.makeForm("presidential pardon", "Leela");
+		if (form)
+		{
+			intern.signForm(*form);   // should fail - grade too low to sign
+			boss.signForm(*form);     // should succeed
+			intern.executeForm(*form); // should fail - grade too low to execute
+			boss.executeForm(*form);   // should succeed
+			delete form;
+		}
 	}
 
 	std::cout << "\n=========================================" << std::endl;
-	std::cout << " ShrubberyCreationForm - grade too low to sign" << std::endl;
+	std::cout << " Intern - stress test: many robotomy forms" << std::endl;
 	std::cout << "=========================================" << std::endl;
 	{
-		Bureaucrat intern("Intern", 150);
-		ShrubberyCreationForm shrub("garden");
-
-		intern.signForm(shrub); // signForm() from ex01, should print failure
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " ShrubberyCreationForm - grade too low to execute" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	{
+		Intern	someRandomIntern;
 		Bureaucrat boss("Boss", 1);
-		Bureaucrat intern("Intern", 150);
-		ShrubberyCreationForm shrub("backyard");
 
-		boss.signForm(shrub);
-		intern.executeForm(shrub); // signed, but intern's grade too low
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " RobotomyRequestForm - success (run a few times)" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	for (int i = 0; i < 4; i++)
-	{
-		Bureaucrat boss("Boss", 1);
-		RobotomyRequestForm robotomy("Bender");
-
-		boss.signForm(robotomy);
-		boss.executeForm(robotomy);
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " RobotomyRequestForm - not signed" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	{
-		Bureaucrat boss("Boss", 1);
-		RobotomyRequestForm robotomy("Fry");
-
-		boss.executeForm(robotomy);
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " PresidentialPardonForm - success" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	try
-	{
-		Bureaucrat boss("Boss", 1);
-		PresidentialPardonForm pardon("Zoidberg");
-
-		boss.signForm(pardon);
-		boss.executeForm(pardon);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Unexpected: " << e.what() << std::endl;
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " PresidentialPardonForm - grade too low to sign" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	{
-		Bureaucrat intern("Intern", 150);
-		PresidentialPardonForm pardon("Leela");
-
-		intern.signForm(pardon);
-	}
-
-	std::cout << "\n=========================================" << std::endl;
-	std::cout << " Polymorphism check: AForm* pointing to derived" << std::endl;
-	std::cout << "=========================================" << std::endl;
-	{
-		Bureaucrat boss("Boss", 1);
-		AForm *form = new ShrubberyCreationForm("polymorphic_test");
-
-		boss.signForm(*form);
-		boss.executeForm(*form); // must call ShrubberyCreationForm's execute via vtable
-		delete form;             // must call ShrubberyCreationForm's destructor via vtable
+		for (int i = 0; i < 4; i++)
+		{
+			AForm *robot = someRandomIntern.makeForm("robotomy request", "Subject");
+			if (robot)
+			{
+				boss.signForm(*robot);
+				boss.executeForm(*robot);
+				delete robot;
+			}
+		}
 	}
 
 	return 0;

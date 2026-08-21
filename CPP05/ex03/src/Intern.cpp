@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "../inc/Intern.hpp"
 #include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/RobotomyRequestForm.hpp"
@@ -56,3 +57,20 @@ AForm	*Intern::createPardon(std::string const &target)
 	return (new PresidentialPardonForm(target));
 }
 
+AForm	*Intern::makeForm(std::string const &formName, std::string const &target)
+{
+	int			i;
+	std::string	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	FormCreator	creator[3] = {&Intern::createShrubbery, &Intern::createRobotomy, &Intern::createPardon};
+
+	i = 0;
+	while (i < 3 && forms[i] != formName)
+		i++;
+	if (i == 3)
+	{
+		std::cout << " Intern doesn't know how to create " << formName << ". Intern goes to get coffee." << std::endl;
+		return (0);
+	}
+	std::cout << "Intern creates: " << forms[i] << std::endl;
+	return (creator[i](target));
+}
