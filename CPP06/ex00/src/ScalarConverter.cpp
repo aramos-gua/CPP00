@@ -12,4 +12,20 @@
 
 #include "ScalarConverter.hpp"
 
+enum	LiteralType
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	INVALID
+};
 
+LiteralType	detectType(const std::string &literal)
+{
+	if (literal.size() == 3 && literal[0] == '\'' && literal[2] == '\'')
+	{
+		if (literal[1] > 29 && literal[1] < 127)
+			return (CHAR);
+	}
+}
