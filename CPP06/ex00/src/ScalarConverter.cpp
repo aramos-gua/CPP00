@@ -72,5 +72,20 @@ void	ScalarConverter::convert(const std::string &literal)
 {
 	LiteralType	type = detectType(literal);
 	double		value;
+
 	switch (type)
+	{
+		case CHAR:
+			value = static_cast<double>(literal[1]);
+			break;
+		case INT:
+			{
+				char	*end;
+				long	result = strtrol(literal.c_str(), &end, 10);
+
+				errno = 0;
+				if (*end != '\0' || errno != 0)
+				
+			}
+	}
 }
